@@ -14,7 +14,7 @@ const ResultModal = forwardRef(function ResultModal(
     };
   });
   return (
-    <dialog ref={dialog} className="result-modal">
+    <dialog ref={dialog} className="result-modal" onClose={handleReset}>
       <h2>You {timeRemaining > 0 ? "Won!" : "Lost :("}</h2>
       <p>
         Target time was <strong>{targetTime} seconds</strong>
