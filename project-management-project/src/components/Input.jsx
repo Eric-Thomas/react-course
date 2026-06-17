@@ -1,4 +1,4 @@
-export default function Input({ label, type }) {
+export default function Input({ label, type, ref }) {
   let classes =
     "w-full p-1 border-b-2 rounded-sm border-stone-300 bg-stone-200 text-stone-600 focus:outline-none focus:border-stone-600";
   return (
@@ -7,9 +7,9 @@ export default function Input({ label, type }) {
         {label}
       </label>
       {type == "textArea" ? (
-        <textarea className={classes} />
+        <textarea ref={ref} className={classes} />
       ) : (
-        <input type={type} className={classes} />
+        <input ref={ref} type={type} className={classes} />
       )}
     </>
   );

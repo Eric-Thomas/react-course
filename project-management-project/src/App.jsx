@@ -3,18 +3,38 @@ import Sidebar from "./components/Sidebar";
 import WelcomeMessage from "./components/WelcomeMessage";
 import ProjectCreation from "./components/ProjectCreation";
 function App() {
-  const [projects, setProjects] = useState([]);
+  const [projects, setProjects] = useState({});
+  const [selectedProjectId, setSelectedProject] = useState(null);
   const [creatingProject, setCreatingProject] = useState(false);
 
   function handleCreateProject() {
     setCreatingProject(true);
   }
 
+  function handleSaveProject(project) {
+    const projectId = crypto.randomUUID();
+    setProjects((prevProjects) => {
+      return {
+        [projectId]: project,
+        ...prevProjects,
+      };
+    });
+    setCreatingProject(false);
+  }
+
   let content = <WelcomeMessage onCreateNewProject={handleCreateProject} />;
 
   if (creatingProject) {
-    content = <ProjectCreation></ProjectCreation>;
+    content = (
+      <ProjectCreation handleSaveProject={handleSaveProject}></ProjectCreation>
+    );
   }
+
+  // if (selectedProjectId != null){
+  //   content (
+  //     <SelectedProject projectId={selectedProjectId} project
+  //   )
+  // }
 
   return (
     <>

@@ -11,9 +11,12 @@ export default function Sidebar({ projects, onCreateNewProject }) {
         + Add Project
       </button>
       <ul className="mt-8">
-        {projects.map((project) => {
+        {Object.entries(projects).map(([id, project]) => {
           return (
-            <li className="w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800 text-stone-400">
+            <li
+              key={id}
+              className="w-full text-left px-2 py-1 rounded-sm my-1 hover:text-stone-200 hover:bg-stone-800 text-stone-400"
+            >
               {project.title}
             </li>
           );
