@@ -28,6 +28,14 @@ function App() {
     setSelectedProject(projectId);
   }
 
+  function handleDelete(projectId) {
+    setSelectedProject(null);
+    setProjects((prevProjects) => {
+      delete prevProjects[projectId];
+      return prevProjects;
+    });
+  }
+
   let content = <WelcomeMessage onCreateNewProject={handleCreateProject} />;
 
   if (creatingProject) {
@@ -41,6 +49,7 @@ function App() {
       <SelectedProject
         projectId={selectedProjectId}
         project={projects[selectedProjectId]}
+        handleDelete={handleDelete}
       />
     );
   }
