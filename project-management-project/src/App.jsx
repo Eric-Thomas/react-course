@@ -36,6 +36,14 @@ function App() {
     });
   }
 
+  function handleAddTask(projectId, task) {
+    setProjects((prevProjects) => {
+      const projectsCopy = structuredClone(prevProjects);
+      projectsCopy[projectId].tasks.push(task);
+      return projectsCopy;
+    });
+  }
+
   let content = <WelcomeMessage onCreateNewProject={handleCreateProject} />;
 
   if (creatingProject) {
@@ -50,6 +58,7 @@ function App() {
         projectId={selectedProjectId}
         project={projects[selectedProjectId]}
         handleDelete={handleDelete}
+        handleAddTask={handleAddTask}
       />
     );
   }

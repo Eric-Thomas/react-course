@@ -1,4 +1,11 @@
-export default function SelectedProject({ projectId, project, handleDelete }) {
+import Tasks from "./Tasks";
+
+export default function SelectedProject({
+  projectId,
+  project,
+  handleDelete,
+  handleAddTask,
+}) {
   return (
     <div className="w-[35rem] mt-16">
       <header className="pb-4 mb-4 border-b-2 border-stone-300">
@@ -18,6 +25,11 @@ export default function SelectedProject({ projectId, project, handleDelete }) {
           {project.description}
         </p>
       </header>
+      <Tasks
+        project={project}
+        projectId={projectId}
+        handleAddTask={handleAddTask}
+      />
     </div>
   );
 }
