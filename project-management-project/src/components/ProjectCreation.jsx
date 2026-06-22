@@ -9,7 +9,7 @@ export default function ProjectCreation({ handleSaveProject }) {
       title: titleRef.current.value,
       description: descriptionRef.current.value,
       dueDate: dueDateRef.current.value,
-      tasks: [],
+      tasks: {},
     });
   }
 

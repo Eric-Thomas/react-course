@@ -1,5 +1,10 @@
 import { useRef } from "react";
-export default function Tasks({ project, projectId, handleAddTask }) {
+export default function Tasks({
+  project,
+  projectId,
+  handleAddTask,
+  handleDeleteTask,
+}) {
   const inputRef = useRef();
 
   function handleAddTaskButtonClick() {
@@ -22,16 +27,22 @@ export default function Tasks({ project, projectId, handleAddTask }) {
           Add Task
         </button>
       </div>
-      {project.tasks.length === 0 ? (
+      {Object.keys(project.tasks).length === 0 ? (
         <p className="text-stone-800 my-4">
           This project doesn't have any tasks yet
         </p>
       ) : (
         <ul className="p-4 mt-8 rounded-md bg-stone-100">
-          {project.tasks.map((task) => {
+          {Object.entries(project.tasks).map(([taskId, task]) => {
             return (
-              <li key={task.taskId} className="flex justify-between my-4">
-                <span>{task.text}</span>
+              <li key={taskId} className="flex justify-between my-4">
+                <span>{task}</span>
+                <button
+                  onClick={() => handleDeleteTask(projectId, taskId)}
+                  className="text-stone-700 hover:text-red-500"
+                >
+                  Delete
+                </button>
               </li>
             );
           })}

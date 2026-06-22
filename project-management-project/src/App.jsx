@@ -40,7 +40,15 @@ function App() {
     setProjects((prevProjects) => {
       const taskId = crypto.randomUUID();
       const projectsCopy = structuredClone(prevProjects);
-      projectsCopy[projectId].tasks.push({ taskId: taskId, text: task });
+      projectsCopy[projectId].tasks[taskId] = task;
+      return projectsCopy;
+    });
+  }
+
+  function handleDeleteTask(projectId, taskId) {
+    setProjects((prevProjects) => {
+      const projectsCopy = structuredClone(prevProjects);
+      delete projectsCopy[projectId].tasks[taskId];
       return projectsCopy;
     });
   }
@@ -60,6 +68,7 @@ function App() {
         project={projects[selectedProjectId]}
         handleDelete={handleDelete}
         handleAddTask={handleAddTask}
+        handleDeleteTask={handleDeleteTask}
       />
     );
   }

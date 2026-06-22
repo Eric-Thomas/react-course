@@ -5,6 +5,7 @@ export default function SelectedProject({
   project,
   handleDelete,
   handleAddTask,
+  handleDeleteTask,
 }) {
   return (
     <div className="w-[35rem] mt-16">
@@ -29,6 +30,7 @@ export default function SelectedProject({
         project={project}
         projectId={projectId}
         handleAddTask={handleAddTask}
+        handleDeleteTask={handleDeleteTask}
       />
     </div>
   );
