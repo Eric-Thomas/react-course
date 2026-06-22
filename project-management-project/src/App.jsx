@@ -38,8 +38,9 @@ function App() {
 
   function handleAddTask(projectId, task) {
     setProjects((prevProjects) => {
+      const taskId = crypto.randomUUID();
       const projectsCopy = structuredClone(prevProjects);
-      projectsCopy[projectId].tasks.push(task);
+      projectsCopy[projectId].tasks.push({ taskId: taskId, text: task });
       return projectsCopy;
     });
   }

@@ -30,8 +30,8 @@ export default function Tasks({ project, projectId, handleAddTask }) {
         <ul className="p-4 mt-8 rounded-md bg-stone-100">
           {project.tasks.map((task) => {
             return (
-              <li className="flex justify-between my-4">
-                <span>{task}</span>
+              <li key={task.taskId} className="flex justify-between my-4">
+                <span>{task.text}</span>
               </li>
             );
           })}
