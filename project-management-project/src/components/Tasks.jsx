@@ -8,6 +8,9 @@ export default function Tasks({
   const inputRef = useRef();
 
   function handleAddTaskButtonClick() {
+    if (inputRef.current.value.trim() == "") {
+      return;
+    }
     handleAddTask(projectId, inputRef.current.value);
     inputRef.current.value = "";
   }

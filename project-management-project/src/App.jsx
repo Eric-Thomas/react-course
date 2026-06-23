@@ -31,8 +31,9 @@ function App() {
   function handleDelete(projectId) {
     setSelectedProject(null);
     setProjects((prevProjects) => {
-      delete prevProjects[projectId];
-      return prevProjects;
+      const projectsCopy = structuredClone(prevProjects);
+      delete projectsCopy[projectId];
+      return projectsCopy;
     });
   }
 
